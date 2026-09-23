@@ -9,24 +9,51 @@
 def seconds_to_hms(total_seconds):
     # TODO (Part 1): return the time as a string "H:MM:SS"
     #   e.g. seconds_to_hms(3661) should return "1:01:01"
-    pass
+    if total_seconds > 86399:
+        print('The maximum on a 24 hour clock is 23:59:59 or 86399 seconds')
+        return
+
+    hours = total_seconds // 3600
+    minutes = (total_seconds - (3600 * hours)) // 60
+    seconds = total_seconds - (3600 * hours) - (60 * minutes)
+
+    return f"{hours}:{minutes:02d}:{seconds:02d}"
 
 
 def admission_price(age):
     # TODO (Part 2): return the ticket price (a number) for someone of this age
-    pass
+    if age < 5:
+        return 0.0
+    elif age <= 12:
+        return 8.0
+    elif age <= 64:
+        return 15.0
+    else:
+        return 10.0
 
 
 def sum_multiples(limit):
     # TODO (Part 3): return the sum of every whole number below `limit`
     #   that is a multiple of 3 or of 5
-    pass
+    sum = 0
+
+    for number in range(limit):
+        if number % 3 == 0 or number % 5 == 0:
+            sum += number
+
+    return sum
 
 
 def total_of_positives(numbers):
     # TODO (Part 4 - STRETCH, optional): return the sum of just the
     #   positive numbers in the list `numbers`
-    pass
+    sum = 0
+
+    for number in numbers:
+        if number > 0:
+            sum += number
+
+    return sum
 
 
 def main():
